@@ -21,7 +21,7 @@ const port: number = parseInt(process.env.POSTGRES_PORT);
       password: process.env.POSTGRES_PASSWORD,
       database: process.env.POSTGRES_DATABASE,
       entities: [Comment, Product],
-      synchronize: false,
+      synchronize: true,
     }),
   ],
   controllers: [],
