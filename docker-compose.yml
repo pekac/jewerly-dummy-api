@@ -1,0 +1,42 @@
+services:
+  # api:
+  #   build:
+  #     dockerfile: Dockerfile
+  #     context: .
+  #     # Only will build development stage from our dockerfile
+  #     target: development
+  #   env_file:
+  #       - .env
+  #   environment:
+  #     POSTGRES_HOST: ${POSTGRES_HOST}
+  #     POSTGRES_USER: ${POSTGRES_USER}
+  #     POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+  #     POSTGRES_PORT: ${POSTGRES_PORT}
+  #     POSTGRES_DATABASE: ${POSTGRES_DATABASE}
+  #     PORT: ${PORT}
+  #     MODE: ${MODE}
+  #     RUN_MIGRATIONS: ${RUN_MIGRATIONS}
+  #   volumes:
+  #     - .:/usr/src/app
+  #     - ./usr/src/app/node_modules
+  #   # Run in dev Mode: npm run start:dev
+  #   command: npm run start:dev
+  #   ports:
+  #     - 3000:3000
+  #   depends_on:
+  #     - postgres
+  postgres:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_DB: ${POSTGRES_DATABASE}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    ports: 
+      - 5432:5432
+    volumes:
+      - docker-nest-postgres:/var/lib/postgresql/data
+volumes:
+  docker-nest-postgres:
+  redis:
+    driver: local
