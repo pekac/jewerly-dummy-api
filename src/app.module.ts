@@ -7,7 +7,6 @@ import { Product } from './products/entities/product.entity';
 import { ProductsModule } from './products/products.module';
 
 require('dotenv').config();
-console.log('env: ', process.env);
 
 const port: number = parseInt(process.env.POSTGRES_PORT);
 
