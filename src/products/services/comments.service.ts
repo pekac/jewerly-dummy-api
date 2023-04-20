@@ -15,8 +15,13 @@ export class CommentsService {
   ) {}
 
   async list(productId: number) {
-    const product = await this.productRepository.findOneBy({
-      id: productId,
+    const product = await this.productRepository.findOne({
+      where: {
+        id: productId,
+      },
+      relations: {
+        comments: true,
+      },
     });
 
     return product?.comments;
